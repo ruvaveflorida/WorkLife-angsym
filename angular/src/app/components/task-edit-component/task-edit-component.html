@@ -1,0 +1,45 @@
+<div class="tasks-wrapper" *ngIf="!loading && task">
+  <div class="tasks-card">
+    <h2>Editar tarea</h2>
+
+    <p *ngIf="currentUser.role === 'admin'">
+      <strong>Título:</strong>
+      <input type="text" [(ngModel)]="task.title" placeholder="Título de la tarea" />
+    </p>
+
+    <p *ngIf="currentUser.role === 'admin'">
+      <strong>Descripción:</strong>
+      <textarea [(ngModel)]="task.description" placeholder="Descripción de la tarea"></textarea>
+    </p>
+
+    <p>
+      <strong>Estado:</strong>
+      <select [(ngModel)]="task.status">
+        <option value="new">Pendiente</option>
+        <option value="in_progress">En progreso</option>
+        <option value="finished">Hecha</option>
+      </select>
+    </p>
+
+    <p *ngIf="currentUser.role === 'admin'">
+      <strong>Asignar a:</strong>
+      <select [(ngModel)]="task.assigned_to_id">
+        <option value="">Selecciona usuario</option>
+        <option *ngFor="let u of users" [value]="u.id">
+          {{ u.name }} {{ u.surname }} ({{ u.email }})
+        </option>
+      </select>
+    </p>
+
+    <div class="buttons">
+      <button class="save-btn" (click)="saveTask()" [disabled]="saving">
+        {{ saving ? 'Guardando...' : 'Guardar cambios' }}
+      </button>
+      <button class="back-btn" (click)="goBack()">← Volver</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="loading">Cargando tarea...</div>
+
+

@@ -1,0 +1,39 @@
+<div class="tasks-wrapper">
+  <div class="tasks-card" *ngIf="!loading && task">
+    <h2>{{ task.title }}</h2>
+
+    <p><strong>Descripción:</strong> {{ task.description }}</p>
+
+    <p>
+      <strong>Estado:</strong>
+      <span 
+        class="status" 
+        [ngClass]="{
+          'status-new': task.status === 'new',
+          'status-in_progress': task.status === 'in_progress',
+          'status-finished': task.status === 'finished'
+        }">
+        {{
+          task.status === 'new' ? 'Pendiente' :
+          task.status === 'in_progress' ? 'En progreso' :
+          task.status === 'finished' ? 'Hecha' :
+          task.status
+        }}
+      </span>
+    </p>
+
+    <p><strong>Creada por:</strong> {{ task.user.email }}</p>
+    <p><strong>Asignada a:</strong> {{ task.assigned_to_name }}</p>
+
+    <p><strong>Creada el:</strong> {{ task.created_at }}</p>
+    <p><strong>Actualizada el:</strong> {{ task.updated_at }}</p>
+
+    <div class="back-edit-button-wrapper">
+      <button class="back-btn" (click)="goHome()">← Volver al inicio</button>
+      <button class="edit-btn" [routerLink]="['/task-edit', task.id]">Editar tarea</button>
+    </div>
+  </div>
+
+  <div *ngIf="loading">Cargando tarea...</div>
+</div>
+

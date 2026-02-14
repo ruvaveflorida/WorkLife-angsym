@@ -1,0 +1,57 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+
+      <!-- LOGO A LA IZQUIERDA -->
+      <a class="navbar-brand" routerLink="/">
+        <img ngSrc="assets/img/tareaspersonales1.jpg" width="60" height="60" alt="Logo" class="navbar-logo" />
+      </a>
+
+      <span *ngIf="userService.identity$ | async as identity"
+      class="role-badge"
+      [ngClass]="{'admin-badge': identity.role==='admin','user-badge': identity.role!=='admin'}">
+      {{ identity.name }}
+    </span>
+
+      <!-- BOTON RESPONSIVE -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+              aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- MENU -->
+      <div class="collapse navbar-collapse justify-content-between" id="navbarContent">
+
+        
+        <ul class="navbar-nav mx-auto" *ngIf="userService.identity$ | async as identity">
+          <li class="nav-item">
+            <a class="nav-link fs-5" routerLink="/">Inicio</a>
+          </li>
+          <li class="nav-item" *ngIf="identity.role === 'admin'">
+            <a class="nav-link fs-5" routerLink="/task-new">Crear Tarea</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fs-5" routerLink="/user-edit">Ajustes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fs-5" (click)="logout()">Cerrar sesión</a>
+          </li>
+        </ul>
+
+
+        <ul class="navbar-nav" *ngIf="!(userService.identity$ | async)">
+          <li class="nav-item">
+            <a class="nav-link fs-5" routerLink="/login">Acceder</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fs-5" routerLink="/register">Registro</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+<router-outlet />

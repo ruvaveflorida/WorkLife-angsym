@@ -1,0 +1,64 @@
+<div class="user-edit-wrapper">
+  <div class="user-edit-card">
+
+    <h2>Editar perfil</h2>
+
+    <div *ngIf="message"
+         class="alert"
+         [ngClass]="{
+           'alert-success': messageType === 'success',
+           'alert-danger': messageType === 'error'
+         }">
+      {{ message }}
+    </div>
+
+    <form #editForm="ngForm" (ngSubmit)="onSubmit()">
+
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Nombre"
+        name="name"
+        [(ngModel)]="user.name"
+        
+      />
+
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Apellido"
+        name="surname"
+        [(ngModel)]="user.surname"
+        
+      />
+
+      <input
+        type="email"
+        class="form-control"
+        placeholder="Email"
+        name="email"
+        [(ngModel)]="user.email"
+        
+      />
+
+       <input
+        type="password"
+        class="form-control"
+        placeholder="password"
+        name="password"
+        [(ngModel)]="user.password"
+        
+      />
+
+      
+      <button
+        type="submit"
+        class="btn btn-primary w-100"
+        [disabled]="!editForm.valid">
+        Guardar cambios
+      </button>
+
+    </form>
+
+  </div>
+</div>

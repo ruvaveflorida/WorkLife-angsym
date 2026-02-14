@@ -1,0 +1,79 @@
+<div class="tasks-wrapper">
+  <div class="tasks-card">
+    <h2>Mis tareas</h2>
+
+    <div class="search-filters">
+      <input
+        type="text"
+        placeholder="Buscar tareas..."
+        [(ngModel)]="searchTerm"
+        (input)="searchTasks()"
+      />
+
+      <select [(ngModel)]="filter" (change)="searchTasks()">
+        <option value="all">Todas</option>
+        <option value="new">Nuevas</option>
+        <option value="in_progress">Pendiente</option>
+        <option value="finished">Hecho</option>
+      </select>
+
+      <select [(ngModel)]="order" (change)="searchTasks()">
+        <option value="1">Fecha Ascendente</option>
+        <option value="2">Fecha Descendente</option>
+      </select>
+
+      <select *ngIf="userRole === 'admin'" [(ngModel)]="assignedToId" (change)="searchTasks()">
+        <option [value]="0">Todos los usuarios</option>
+        <option *ngFor="let u of users" [value]="u.id">{{ u.name }} {{ u.surname }}</option>
+      </select>
+
+    </div>
+
+    <div *ngIf="loading">Cargando tareas...</div>
+
+    <div *ngIf="!loading && tasks.length === 0">
+      No tienes tareas todavía.
+    </div>
+
+    <ul class="task-list" *ngIf="!loading && tasks.length > 0">
+      <li class="task-item" *ngFor="let task of tasks">
+
+        <div class="task-content">
+          <div>
+            <h4 class="task-title"><a [routerLink]="['/task', task.id]">{{ task.title }}</a></h4>
+            <p class="task-description">{{ task.description }}</p>
+        <span 
+            class="task-status"
+            [ngClass]="{
+              'status-pending': task.status === 'new',
+              'status-in_progress': task.status === 'in_progress',
+              'status-done': task.status === 'finished'
+            }"
+          >
+            {{
+              task.status === 'new' ? 'Pendiente' :
+              task.status === 'in_progress' ? 'En progreso' :
+              task.status === 'finished' ? 'Hecho' :
+              task.status
+            }}
+          </span>
+          </div>
+          <div class="task-actions" *ngIf="userRole === 'admin'">
+            <button class="edit-btn" [routerLink]="['/task-edit', task.id]">Editar</button>
+            <button class="delete-btn" (click)="deleteTask(task.id)" >Eliminar</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="pagination" *ngIf="!loading && totalPages > 1">
+      <button (click)="prevPage()" [disabled]="page === 1">Anterior</button>
+      <span>Página {{ page }} de {{ totalPages }}</span>
+      <button (click)="nextPage()" [disabled]="page === totalPages">Siguiente</button>
+    </div>
+  </div>
+</div>
+
+
+
+

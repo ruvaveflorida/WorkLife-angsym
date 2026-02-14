@@ -1,0 +1,48 @@
+<div class="col-md-12">
+
+  <div class="login-wrapper">
+    <div class="login-card">
+      <h2>Acceder</h2>
+
+      <div *ngIf="message"
+           class="alert"
+           [ngClass]="{
+             'alert-success': messageType === 'success',
+             'alert-danger': messageType === 'error'
+           }">
+        {{ message }}
+      </div>
+
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+        <input type="email"
+               class="form-control mb-2"
+               placeholder="Email"
+               name="email"
+               #email="ngModel"
+               [(ngModel)]="user.email"
+               required />
+
+        <input type="password"
+               class="form-control mb-3"
+               placeholder="Contraseña"
+               name="password"
+               #password="ngModel"
+               [(ngModel)]="user.password"
+               required />
+
+        <button type="submit"
+                class="btn btn-primary w-100"
+                [disabled]="!loginForm.valid">
+          Acceder
+        </button>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+

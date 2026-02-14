@@ -1,0 +1,217 @@
+.tasks-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  background: #12152a;
+  padding: 2rem;
+}
+
+.tasks-card {
+  background: #1c1f3a;
+  padding: 2rem;
+  width: 100%;
+  max-width: 700px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  color: #e6e6e6;
+}
+
+.tasks-card h2 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-item {
+  background: #0f122a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  transition: all 0.25s ease;
+}
+
+.task-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 10px rgba(108, 75, 244, 0.3);
+}
+
+.task-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.task-actions button {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.edit-btn {
+  background: rgba(108, 75, 244, 0.8);
+  color: #fff;
+}
+
+.edit-btn:hover {
+  background: rgba(108, 75, 244, 1);
+}
+
+.delete-btn {
+  background: rgba(244, 75, 108, 0.8);
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background: rgba(244, 75, 108, 1);
+}
+
+.task-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.task-description {
+  font-size: 0.95rem;
+  color: #c7c9e2;
+  margin-top: 0.4rem;
+}
+
+.task-status {
+  display: inline-block;
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  font-weight: bold;
+  padding: 0.2rem 0.6rem;
+  border-radius: 10px;
+}
+
+.status-pending {
+  color: #f1c40f;
+  background: rgba(241, 196, 15, 0.2);
+}
+
+.status-in_progress {
+  color: #6c4bf4;
+  background: rgba(108, 75, 244, 0.2);
+}
+
+.status-done {
+  color: #2ecc71;
+  background: rgba(46, 204, 113, 0.2);
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.pagination button {
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+  background: linear-gradient(135deg, #dd3e8f, #6c4bf4);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.pagination button:hover {
+  background: linear-gradient(135deg, #e84aa1, #7a5cff);
+  transform: translateY(-1px);
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.task-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.edit-btn {
+  background: rgba(108, 75, 244, 0.8);
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.edit-btn:hover {
+  background: rgba(108, 75, 244, 1);
+}
+
+.search-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+}
+
+.search-filters input {
+  flex: 1 1 200px;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  background: #2a2d4a;
+  color: #e6e6e6;
+  transition: all 0.2s ease;
+}
+
+.search-filters input::placeholder {
+  color: #b0b0c0;
+}
+
+.search-filters input:focus {
+  box-shadow: 0 0 8px rgba(108, 75, 244, 0.6);
+}
+
+.search-filters select {
+  flex: 0 0 140px;
+  padding: 0.5rem 0.8rem;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  background: #2a2d4a;
+  color: #e6e6e6;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.search-filters select:hover,
+.search-filters select:focus {
+  box-shadow: 0 0 8px rgba(108, 75, 244, 0.6);
+}
+
+.search-filters select option {
+  background: #1c1f3a;
+  color: #e6e6e6;
+}

@@ -1,0 +1,63 @@
+<div class="task-wrapper">
+  <div class="task-card">
+
+    <h2>Nueva tarea</h2>
+
+    <div *ngIf="message"
+         class="alert"
+         [ngClass]="{
+           'alert-success': messageType === 'success',
+           'alert-danger': messageType === 'error'
+         }">
+      {{ message }}
+    </div>
+
+    <form #taskForm="ngForm" (ngSubmit)="onSubmit()" >
+
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Titulo"
+        [(ngModel)]="task.title"
+        name="title"
+        required
+      />
+
+      <textarea
+        class="form-control"
+        placeholder="Descripcion"
+        rows="3"
+        [(ngModel)]="task.description"
+        name="description"
+      ></textarea>
+
+      <select
+        class="form-control"
+        [(ngModel)]="task.status"
+        name="status"
+        required
+      >
+        <option value="">Selecciona estado</option>
+        <option value="new">Pendiente</option>
+        <option value="in_progress">En progreso</option>
+        <option value="finished">Hecha</option>
+      </select>
+
+      <label>Asignar a:</label>
+      <select class="form-control" [(ngModel)]="task.assigned_to" name="assigned_to">
+        <option value="">Selecciona usuario (opcional)</option>
+        <option *ngFor="let u of users" [value]="u.id">
+          {{ u.name }} {{ u.surname }} ({{ u.email }})
+        </option>
+      </select>
+
+      <button type="submit"
+        class="btn btn-primary w-100"
+        [disabled]="!taskForm.valid">
+        Crear tarea
+      </button>
+
+    </form>
+
+  </div>
+</div>

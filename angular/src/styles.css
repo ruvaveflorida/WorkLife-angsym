@@ -1,0 +1,52 @@
+/* You can add global styles to this file, and also import other style files */
+/* src/styles.css */
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+/* Fondo noche espacial */
+body {
+  background: #0b0c1a; /* azul oscuro muy profundo */
+  background: linear-gradient(135deg, #0b0c1a, #12152a); /* degradado sutil */
+  color: #e0e0e0; /* blanco mate para texto */
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+a {
+  color: #e0e0e0;
+  text-decoration: none;
+  transition: all 0.3s ease; /* transición suave al hover */
+}
+
+a:hover {
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.2); /* sombra blanca muy leve */
+  color: #ffffff; /* opcional: ligeramente más brillante */
+}
+.btn-dark-space {
+  background-color: #1a1c2c;
+  color: #e0e0e0;
+  border: 1px solid #2a2c3c;
+  transition: all 0.3s ease;
+}
+
+.btn-dark-space:hover {
+  background-color: #2a2c3c;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+header, .navbar {
+  background-color: #12152a; /* azul oscuro */
+  color: #e0e0e0;
+}
+
+.navbar .nav-link {
+  color: #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+  color: #ffffff;
+  text-shadow:
+    0 0 6px rgba(221, 62, 143, 0.5),
+    0 0 12px rgba(108, 75, 244, 0.4);
+}
+

@@ -1,0 +1,32 @@
+<div class="col-md-12">
+  <div class="login-wrapper">
+    <div class="login-card">
+      <h2>Registro</h2>
+
+      <div *ngIf="message"
+           class="alert"
+           [ngClass]="{
+             'alert-success': messageType === 'success',
+             'alert-danger': messageType === 'error'
+           }">
+        {{ message }}
+      </div>
+
+      <form #registerForm="ngForm" (ngSubmit)="onSubmit()">
+        <input type="text" class="form-control" placeholder="Nombre" name="name"
+               [(ngModel)]="user.name" required />
+        <input type="text" class="form-control" placeholder="Apellido" name="surname"
+               [(ngModel)]="user.surname" required />
+        <input type="email" class="form-control" placeholder="Email" name="email"
+               [(ngModel)]="user.email" required />
+        <input type="password" class="form-control" placeholder="Contraseña" name="password"
+               [(ngModel)]="user.password" required />
+
+        <button type="submit" class="btn btn-primary w-100" [disabled]="!registerForm.valid">
+          Registrarse
+        </button>
+      </form>
+
+    </div>
+  </div>
+</div>

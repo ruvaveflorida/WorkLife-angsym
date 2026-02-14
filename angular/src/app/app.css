@@ -1,0 +1,23 @@
+.role-badge {
+  display: inline-block;
+  padding: 6px 14px;       
+  border-radius: 12px;      
+  font-weight: bold;
+  font-size: 0.95rem;       
+  margin-left: 15px;
+  text-align: center;
+  min-width: 60px;          
+}
+
+.user-badge {
+  background-color: #3498db;
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.admin-badge {
+  background-color: #f1c40f;
+  color: #000; 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
