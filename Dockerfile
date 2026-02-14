@@ -9,9 +9,7 @@ RUN apt-get update && apt-get install -y \
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
-COPY . .
-
-WORKDIR /app/symfony
+COPY symfony/ .
 
 # Instala dependencias de Symfony
 RUN composer install --no-dev --optimize-autoloader --no-scripts --ignore-platform-req=ext-http
