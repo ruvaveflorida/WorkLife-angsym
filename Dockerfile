@@ -1,24 +1,27 @@
 FROM php:8.2-cli
 
-# Extensiones necesarias para Symfony
+# Instalar extensiones necesarias
 RUN apt-get update && apt-get install -y \
-    zip unzip git libonig-dev libicu-dev \
-    && docker-php-ext-install pdo_mysql intl mbstring
+    libzip-dev \
+    zip \
+    git \
+    unzip \
+    && docker-php-ext-install pdo pdo_mysql zip
 
-# Composer
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+# Instalar Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Carpeta de trabajo
+# Directorio de trabajo
 WORKDIR /app
 
-# Copia todos los archivos del backend
-COPY symfony/ .
+# Copiar archivos
+COPY . .
 
-# Instala dependencias de Symfony ignorando ext-http
-RUN composer install --no-dev --optimize-autoloader --ignore-platform-req=ext-http --no-scripts
+# Instalar dependencias
+RUN composer install --no-dev --optimize-autoloader
 
-# Expone puerto
-EXPOSE 10000
+# Exponer puerto
+EXPOSE 8080
 
-# Servidor PHP integrado apuntando a public
-CMD ["php", "-S", "0.0.0.0:10000", "-t", "public"]
+# Comando de inicio
+CMD ["bash", "start.sh"]
