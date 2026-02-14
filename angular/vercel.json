@@ -1,5 +1,5 @@
 {
   "buildCommand": "ng build",
-  "outputDirectory": "dist/angular",
+  "outputDirectory": "dist/angular/browser",
   "framework": "angular"
 }
