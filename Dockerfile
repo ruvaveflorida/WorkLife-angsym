@@ -1,9 +1,10 @@
-# Usa PHP con extensiones necesarias
+# Usa PHP 8.2 con CLI y extensiones comunes
 FROM php:8.2-cli
 
-# Instala extensiones y herramientas necesarias
-RUN apt-get update && apt-get install -y zip unzip libonig-dev git
-RUN docker-php-ext-install pdo_mysql
+# Instala extensiones necesarias
+RUN apt-get update && apt-get install -y \
+    zip unzip git libonig-dev libicu-dev \
+    && docker-php-ext-install pdo_mysql intl mbstring
 
 # Instala Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
@@ -17,8 +18,8 @@ COPY . .
 # Instala dependencias de Symfony
 RUN composer install --no-dev --optimize-autoloader
 
-# Expone puerto para el servidor PHP
+# Expone puerto 10000
 EXPOSE 10000
 
-# Comando para arrancar Symfony
+# Arranca Symfony
 CMD ["php", "-S", "0.0.0.0:10000", "-t", "symfony/public"]
