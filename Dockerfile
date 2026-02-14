@@ -15,7 +15,7 @@ WORKDIR /app
 COPY symfony/ .
 
 # Instala dependencias de Symfony ignorando ext-http
-RUN composer install --no-dev --optimize-autoloader --ignore-platform-req=ext-http
+RUN composer install --no-dev --optimize-autoloader --ignore-platform-req=ext-http --no-scripts
 
 # Expone puerto
 EXPOSE 10000
