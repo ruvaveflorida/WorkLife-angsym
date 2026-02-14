@@ -8,12 +8,17 @@ RUN apt-get update && apt-get install -y \
 # Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
+# Carpeta de trabajo
 WORKDIR /app
+
+# Copia todos los archivos del backend
 COPY symfony/ .
 
-# Instala dependencias de Symfony
-RUN composer install --no-dev --optimize-autoloader --no-scripts --ignore-platform-req=ext-http
+# Instala dependencias de Symfony ignorando ext-http
+RUN composer install --no-dev --optimize-autoloader --ignore-platform-req=ext-http
 
+# Expone puerto
 EXPOSE 10000
 
-CMD ["php", "-S", "0.0.0.0:10000", "-t", "symfony/public"]
+# Servidor PHP integrado apuntando a public
+CMD ["php", "-S", "0.0.0.0:10000", "-t", "public"]
