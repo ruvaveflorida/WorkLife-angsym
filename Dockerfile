@@ -14,7 +14,7 @@ COPY . .
 WORKDIR /app/symfony
 
 # Instala dependencias de Symfony
-RUN composer install --no-dev --optimize-autoloader --ignore-platform-req=ext-http
+RUN composer install --no-dev --optimize-autoloader --no-scripts --ignore-platform-req=ext-http
 
 EXPOSE 10000
 
