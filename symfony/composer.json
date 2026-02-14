@@ -6,25 +6,26 @@
     "require": {
         "php": ">=8.2",
         "ext-ctype": "*",
+        "ext-http": "*",
         "ext-iconv": "*",
-        "doctrine/dbal": "^3.10.4",
-        "doctrine/doctrine-bundle": "^2.18.2",
+        "doctrine/dbal": "^3",
+        "doctrine/doctrine-bundle": "^2.18",
         "doctrine/doctrine-migrations-bundle": "^3.7",
-        "doctrine/orm": "^3.6.2",
+        "doctrine/orm": "^3.6",
         "firebase/php-jwt": "^6.11.1",
         "knplabs/knp-paginator-bundle": "^5.9",
-        "nelmio/cors-bundle": "^2.6.1",
-        "symfony/console": "^6.4.32",
+        "nelmio/cors-bundle": "^2.6",
+        "symfony/console": "^6.4.30",
+        "symfony/dotenv": "^6.4.30",
         "symfony/flex": "^2.10",
-        "symfony/framework-bundle": "^6.4.33",
+        "symfony/framework-bundle": "^6.4.30",
         "symfony/runtime": "^6.4.30",
-        "symfony/security-bundle": "^6.4.32",
-        "symfony/validator": "^6.4.33",
+        "symfony/security-bundle": "^6.4",
+        "symfony/validator": "^6.4",
         "symfony/yaml": "^6.4.30"
     },
     "require-dev": {
-        "symfony/maker-bundle": "^1.66",
-        "symfony/dotenv": "^6.4.30"
+        "symfony/maker-bundle": "^1.66"
     },
     "config": {
         "allow-plugins": {
