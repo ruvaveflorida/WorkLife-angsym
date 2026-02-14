@@ -11,6 +11,8 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 WORKDIR /app
 COPY . .
 
+WORKDIR /app/symfony
+
 # Instala dependencias de Symfony
 RUN composer install --no-dev --optimize-autoloader
 
