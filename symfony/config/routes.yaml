@@ -11,3 +11,11 @@ controllers:
     resource: '../src/Controller/'
     type: attribute
 
+frontend:
+    path: /{angularRouting}
+    controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::class
+    defaults:
+        angularRouting: null
+        template: 'index.html'
+    requirements:
+        angularRouting: ".+"
